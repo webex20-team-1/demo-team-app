@@ -6,8 +6,8 @@
         <div class="memo__checkbox">
           <input type="checkbox" />
         </div>
-        <div class="memo__text">ひき肉を300g買う</div>
-        <button class="memo__delete">削除</button>
+        <div class="memo__text">ひき肉niku</div>
+        <button class="memo__delete" v-on:click="sakuzyo">削除</button>
       </li>
       <li class="memo">
         <div class="memo__checkbox">
@@ -32,7 +32,32 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      inputMemo: "",
+      memos: [
+        {
+          text: "ひき肉を300g買う",
+          isDone: false,
+        },
+        {
+          text: "ホウレンソウを1束買う",
+          isDone: false,
+        },
+        {
+          text: "ピーマンを2個買う",
+          isDone: false,
+        },
+      ],
+    }
+  },
+  methods: {
+    sakuzyo(index) {
+      this.memos.splice(index, 1)
+    },
+  },
+}
 </script>
 
 <style scoped>
