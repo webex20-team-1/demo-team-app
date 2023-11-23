@@ -2,7 +2,9 @@
   <footer class="footer">
     <div>
       This Application is made by
-      <span class="names">○○○, ○○○ and ○○○</span>.
+      <span class="names"
+        >Yusuke Miyamura, Ryo Nishioka and Kanami Takashima</span
+      >.
     </div>
     <small
       >The Application is created as a part of the GeekSalon WebExpert
