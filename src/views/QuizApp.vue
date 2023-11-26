@@ -14,14 +14,14 @@
     </div>
     <div class="container">
       <button
-        v-for="(choice, i) in quiz.choices"
+        v-for="(sentaku, i) in quiz.choices"
         v-bind:key="i"
-        v-on:click="choiced(choice)"
+        v-on:click="choiced(sentaku)"
       >
-        {{ choice.text }}
+        {{ sentaku.text }}
       </button>
     </div>
-    <div id="feedback">{{ feedback }}</div>
+    <div>{{ feedback }}</div>
   </div>
 </template>
 
@@ -32,7 +32,6 @@ export default {
       feedback: "",
       quiz: {
         text: "チーム名に含まれる「dlbia」はイギリスのバンドOasisによる「Don't Look Back In Anger」の略称です。この英文の意味は？",
-        image: "oasis_morningglory.jpg",
         choices: [
           {
             text: "A",
@@ -55,8 +54,8 @@ export default {
     }
   },
   methods: {
-    choiced(choice) {
-      this.feedback = choice.feedback
+    choiced(sentaku) {
+      this.feedback = sentaku.feedback
     },
   },
 }
