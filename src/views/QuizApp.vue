@@ -7,6 +7,11 @@
       src="@/assets/oasis_morningglory.jpg"
       alt="quiz.text"
     />
+    <div>
+      <li>A:振り向くな、感じろ</li>
+      <li>B:怒りを持って背中を睨まないで</li>
+      <li>C:怒りに任せて過去を振り向かないで</li>
+    </div>
     <div class="container">
       <button
         v-for="(choice, i) in quiz.choices"
@@ -30,17 +35,17 @@ export default {
         image: "oasis_morningglory.jpg",
         choices: [
           {
-            text: "振り向くな、感じろ",
+            text: "A",
             isCorrect: false,
             feedback: "残念！",
           },
           {
-            text: "怒りを持って背中を見ないで",
+            text: "B",
             isCorrect: false,
             feedback: "残念！",
           },
           {
-            text: "怒りに任せて過去を振り向くな",
+            text: "C",
             isCorrect: true,
             feedback:
               "正解！意訳は「変わらない過去より未来に目を向けろ」だよ！ロックだね！",
@@ -66,26 +71,26 @@ export default {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h2 {
+  padding-right: 2em;
+}
 .quiz-image {
   height: 200px;
   width: 200px;
+  margin-bottom: 1em;
   object-fit: contain;
 }
 
 button {
-  display: flex;
-  width: auto;
-  height: 3rem;
-  padding: auto;
+  width: 2.2em;
 }
-
-#feedback {
-  margin: 10px;
+li {
+  list-style: none;
 }
 .container {
   display: flex;
-  height: 2em;
-  width: 300px;
+  height: 1.8em;
+  width: 150px;
   padding: 1em;
   justify-content: space-around;
 }
