@@ -4,8 +4,8 @@
     <h2>Q. {{ quiz.text }}</h2>
     <img
       class="quiz-image"
-      v-bind:src="oasis_morningglory.jpg"
-      v-bind:alt="quiz.text"
+      src="@/assets/oasis_morningglory.jpg"
+      alt="quiz.text"
     />
     <div class="container">
       <button
@@ -16,7 +16,7 @@
         {{ choice.text }}
       </button>
     </div>
-    <div>{{ feedback }}</div>
+    <div id="feedback">{{ feedback }}</div>
   </div>
 </template>
 
@@ -27,24 +27,23 @@ export default {
       feedback: "",
       quiz: {
         text: "チーム名に含まれる「dlbia」はイギリスのバンドOasisによる「Don't Look Back In Anger」の略称です。この英文の意味は？",
-        image: "",
+        image: "oasis_morningglory.jpg",
         choices: [
           {
-            text: "ゴリアテ",
+            text: "振り向くな、感じろ",
             isCorrect: false,
-            feedback:
-              "残念！ゴリアテは、旧約聖書に登場するダビデに石で殺される巨人だよ。",
+            feedback: "残念！",
           },
           {
-            text: "ゼニガメ",
+            text: "怒りを持って背中を見ないで",
             isCorrect: false,
-            feedback:
-              "残念！ゼニガメは、クサガメまたはニホンイシガメの幼体だよ。",
+            feedback: "残念！",
           },
           {
-            text: "ガニメデ",
+            text: "怒りに任せて過去を振り向くな",
             isCorrect: true,
-            feedback: "正解！ガニメデは、木星の第三惑星だよ！",
+            feedback:
+              "正解！意訳は「変わらない過去より未来に目を向けろ」だよ！ロックだね！",
           },
         ],
       },
@@ -68,35 +67,21 @@ export default {
 }
 
 .quiz-image {
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
   object-fit: contain;
 }
 
-.container {
+button {
   display: flex;
-  height: 2em;
-  width: 300px;
-  padding: 1em;
-  justify-content: space-around;
-}
-</style>
-
-<style>
-.app {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: auto;
+  height: 3rem;
+  padding: auto;
 }
 
-.quiz-image {
-  height: 300px;
-  width: 300px;
-  object-fit: contain;
+#feedback {
+  margin: 10px;
 }
-
 .container {
   display: flex;
   height: 2em;
