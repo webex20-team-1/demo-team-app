@@ -8,9 +8,9 @@
       alt="quiz.text"
     />
     <div>
-      <li>A:振り向くな、感じろ</li>
-      <li>B:怒りを持って背中を睨まないで</li>
-      <li>C:怒りに任せて過去を振り向かないで</li>
+      <li>{{ quiz.choices[0].question }}</li>
+      <li>{{ quiz.choices[1].question }}</li>
+      <li>{{ quiz.choices[2].question }}</li>
     </div>
     <div class="container">
       <button
@@ -35,16 +35,19 @@ export default {
         choices: [
           {
             text: "A",
+            question: "A:振り向くな、感じろ",
             isCorrect: false,
             feedback: "残念！",
           },
           {
             text: "B",
+            question: "B:怒りを持って背中を睨まないで",
             isCorrect: false,
             feedback: "残念！",
           },
           {
             text: "C",
+            question: "C:怒りに任せて過去を振り向かないで",
             isCorrect: true,
             feedback:
               "正解！意訳は「変わらない過去より未来に目を向けろ」だよ！ロックだね！",
@@ -61,7 +64,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .app {
   display: flex;
   width: 100%;
@@ -70,9 +73,6 @@ export default {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h2 {
-  padding-right: 2em;
-}
 .quiz-image {
   height: 200px;
   width: 200px;
