@@ -2,31 +2,22 @@
   <h1>Vue メモ</h1>
   <div class="memo-list">
     <ul class="memo-list__container">
-      <li class="memo">
+      <li v-for="(memo, index) in memos" v-bind:key="index" class="memo">
         <div class="memo__checkbox">
-          <input type="checkbox" />
+          <!-- ここ下にclass=memo-list-cだめ？ -->
+          <input type="checkbox" v-model="memo.isDone" />
         </div>
-        <div class="memo__text">ひき肉niku</div>
+        <div v-if="memo.isDone" class="memo__text memo__text--done">
+          {{ index }}:{{ memo.text }}
+        </div>
+        <div v-else class="memo__text">{{ index }}:{{ memo.text }}</div>
+
         <button class="memo__delete" v-on:click="sakuzyo">削除</button>
-      </li>
-      <li class="memo">
-        <div class="memo__checkbox">
-          <input type="checkbox" />
-        </div>
-        <div class="memo__text">ホウレンソウを1束買う</div>
-        <button class="memo__delete">削除</button>
-      </li>
-      <li class="memo">
-        <div class="memo__checkbox">
-          <input type="checkbox" />
-        </div>
-        <div class="memo__text">ピーマンを2個買う</div>
-        <button class="memo__delete">削除</button>
       </li>
     </ul>
     <div class="add-memo-field">
-      <input class="add-memo-field__input" type="text" />
-      <button class="add-memo-field__button">追加</button>
+      <input class="add-memo-field__input" type="text" v-model="inputMemo" />
+      <button class="add-memo-field__button" v-on:click="addMemo">追加</button>
     </div>
   </div>
 </template>
