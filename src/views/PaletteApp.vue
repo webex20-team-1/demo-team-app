@@ -3,7 +3,6 @@
   <div class="app">
     <div
       class="palette"
-      style="background-color: rgba(${color.red}, ${color.green}, 200, 0.5)"
       v-on:mousemove="ChangeColor"
       v-on:click="pickColor"
       v-bind:style="paletteStyle"
@@ -12,10 +11,11 @@
     <div class="colors-container">
       <div
         class="mini-palette"
-        v-for="color in colors"
-        v-bind:key="{
+        v-for="(color, index) in colors"
+        v-bind:style="{
           backgroundColor: `rgba(${color.red}, ${color.green}, 200, 0.5)`,
         }"
+        v-bind:key="index"
         v-on:click="showColor(color)"
       ></div>
     </div>
@@ -47,12 +47,12 @@ export default {
       this.red = color.red
       this.green = color.green
     },
-    computed: {
-      paletteStyle() {
-        return {
-          backgroundColor: "rgba(${this.red}, ${this.green}, 200, 0.5)",
-        }
-      },
+  },
+  computed: {
+    paletteStyle() {
+      return {
+        backgroundColor: `rgba(${this.red}, ${this.green}, 200, 0.5)`,
+      }
     },
   },
 }
