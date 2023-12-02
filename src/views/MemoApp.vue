@@ -47,6 +47,13 @@ export default {
     sakuzyo(index) {
       this.memos.splice(index, 1)
     },
+    addMemo() {
+      if (this.inputMemo !== "") {
+        const memo = { text: this.inputMemo, isDone: false }
+        this.memos.push(memo)
+        this.inputMemo = ""
+      }
+    },
   },
 }
 </script>
