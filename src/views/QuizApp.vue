@@ -1,12 +1,12 @@
 <template>
   <h1>Vue クイズ</h1>
   <div class="app" v-for="(quiznumber, i) in quizzes" v-bind:key="i">
-    <h2>Q. {{ quiztext }}</h2>
+    <h2>Q. {{ quiznumber.text }}</h2>
     <img class="quiz-image" v-bind:src="quizImagePath" />
     <div>
-      <li>{{ choice1 }}</li>
-      <li>{{ choice2 }}</li>
-      <li>{{ choice3 }}</li>
+      <li>{{ quiznumber.choices[0].question }}</li>
+      <li>{{ quiznumber.choices[1].question }}</li>
+      <li>{{ quiznumber.choices[2].question }}</li>
     </div>
     <div class="button-container">
       <button
@@ -56,7 +56,7 @@ export default {
         },
         {
           text: "イギリスのバンド「Oasis」の主要メンバー2人の関係性は？",
-          image: "gallagherbros.jpeg",
+          image: "gallagherbros.jpg",
           choices: [
             {
               buttontext: "A",
@@ -84,7 +84,7 @@ export default {
   methods: {
     quizload: function (quiznumber) {
       quiznumber += 1
-      this.quiztext = "Q. " + this.quiznumber.text
+      this.quiztext = this.quiznumber.text
       this.choice1 = quiznumber.choices[0].question
       this.choice2 = quiznumber.choices[1].question
       this.choice3 = quiznumber.choices[2].question
