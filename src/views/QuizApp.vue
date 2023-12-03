@@ -56,7 +56,7 @@ export default {
         },
         {
           text: "イギリスのバンド「Oasis」の主要メンバー2人の関係性は？",
-          image: "gallagherbros.jpg",
+          image: "gallagherbros.jpeg",
           choices: [
             {
               buttontext: "A",
