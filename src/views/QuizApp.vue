@@ -1,31 +1,24 @@
 <template>
   <h1>Vue クイズ</h1>
-  <div class="app">
-    <h2>Q. {{ quizzes[0].text }}</h2>
+  <div class="app" v-for="(quiznumber, i) in quizzes" v-bind:key="i">
+    <h2>Q. {{ quiztext }}</h2>
     <img class="quiz-image" v-bind:src="quizImagePath" />
     <div>
-      <li>{{ quizzes[0].choices[0].question }}</li>
-      <li>{{ quizzes[0].choices[1].question }}</li>
-      <li>{{ quizzes[0].choices[2].question }}</li>
+      <li>{{ choice1 }}</li>
+      <li>{{ choice2 }}</li>
+      <li>{{ choice3 }}</li>
     </div>
     <div class="button-container">
       <button
-        v-for="(sentaku, i) in quizzes[0].choices"
+        v-for="(sentaku, i) in quiznumber.choices"
         v-bind:key="i"
         v-on:click="choiced(sentaku)"
       >
-        {{ sentaku.text }}
+        {{ sentaku.buttontext }}
       </button>
     </div>
     <div>{{ feedback }}</div>
-    <button
-      id="next-quiz"
-      v-for="(quiznumber, i) in quizzes"
-      v-bind:key="i"
-      v-on:click="quizload(quiznumber)"
-    >
-      次へ
-    </button>
+    <button class="next-button" v-on:click="quizload(quiznumber)">次へ</button>
   </div>
 </template>
 
@@ -33,6 +26,7 @@
 export default {
   data: function () {
     return {
+      quiznumber: 0,
       feedback: "",
       quizzes: [
         {
@@ -62,7 +56,7 @@ export default {
         },
         {
           text: "イギリスのバンド「Oasis」の主要メンバー2人の関係性は？",
-          image: "oasis_morningglory.jpg",
+          image: "gallagherbros.jpg",
           choices: [
             {
               buttontext: "A",
@@ -88,18 +82,21 @@ export default {
     }
   },
   methods: {
+    quizload: function (quiznumber) {
+      quiznumber += 1
+      this.quiztext = "Q. " + this.quiznumber.text
+      this.choice1 = quiznumber.choices[0].question
+      this.choice2 = quiznumber.choices[1].question
+      this.choice3 = quiznumber.choices[2].question
+      this.feedback = ""
+    },
     choiced: function (sentaku) {
       this.feedback = sentaku.feedback
-    },
-    quizload: function (quiznumber) {
-      this.quiztext = "Q. " + this.quizzes[quiznumber].text
-      this.quizimage.src = "./images/" + this.quizzes[quiznumber].image
-      this.feedback = ""
     },
   },
   computed: {
     quizImagePath() {
-      return "@/assets/" + this.quizzes.image
+      return require("@/assets/" + this.quiznumber.image)
     },
   },
 }
@@ -121,8 +118,8 @@ export default {
   object-fit: contain;
 }
 
-button {
-  width: 2.2em;
+.next-button {
+  width: 3.5em;
 }
 li {
   list-style: none;
