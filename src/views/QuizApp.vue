@@ -1,12 +1,12 @@
 <template>
   <h1>Vue クイズ</h1>
-  <div class="app" v-for="(quiznumber, i) in quizzes" v-bind:key="i">
-    <h2>Q. {{ quiznumber.text }}</h2>
+  <div class="app">
+    <h2>Q. {{ quiz.text }}</h2>
     <img class="quiz-image" v-bind:src="quizImagePath" />
     <div>
-      <li>{{ quiznumber.choices[0].question }}</li>
-      <li>{{ quiznumber.choices[1].question }}</li>
-      <li>{{ quiznumber.choices[2].question }}</li>
+      <li>{{ quiz.choices[0].question }}</li>
+      <li>{{ quiz.choices[1].question }}</li>
+      <li>{{ quiz.choices[2].question }}</li>
     </div>
     <div class="button-container">
       <button
@@ -56,7 +56,7 @@ export default {
         },
         {
           text: "イギリスのバンド「Oasis」の主要メンバー2人の関係性は？",
-          image: "gallagherbros.jpg",
+          image: "gallagherbros.jpeg",
           choices: [
             {
               buttontext: "A",
@@ -82,12 +82,8 @@ export default {
     }
   },
   methods: {
-    quizload: function (quiznumber) {
-      quiznumber += 1
-      this.quiztext = this.quiznumber.text
-      this.choice1 = quiznumber.choices[0].question
-      this.choice2 = quiznumber.choices[1].question
-      this.choice3 = quiznumber.choices[2].question
+    quizload: function () {
+      this.quiznumber += 1
       this.feedback = ""
     },
     choiced: function (sentaku) {
@@ -96,7 +92,10 @@ export default {
   },
   computed: {
     quizImagePath() {
-      return require("@/assets/" + this.quiznumber.image)
+      return require("@/assets/" + this.quizzes[this.quiznumber].image)
+    },
+    quiz() {
+      return this.quizzes[this.quiznumber]
     },
   },
 }
