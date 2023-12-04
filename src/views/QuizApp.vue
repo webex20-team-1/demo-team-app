@@ -10,7 +10,7 @@
     </div>
     <div class="button-container">
       <button
-        v-for="(sentaku, i) in quiznumber.choices"
+        v-for="(sentaku, i) in quiz.choices"
         v-bind:key="i"
         v-on:click="choiced(sentaku)"
       >
